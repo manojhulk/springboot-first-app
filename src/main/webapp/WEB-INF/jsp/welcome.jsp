@@ -4,7 +4,7 @@
      <title>welcome></title>
 </head>
 <body>
-   <h2>Find Your cars</h2>
+   <h2>Find Your car</h2>
    <form method="post">
          <input type="text" class="form-control mt-3" name="start" placeholder="Journey start"/>
          <input type="text" class="form-control mt-3" name="end" placeholder="Journey end"/>
