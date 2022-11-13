@@ -6,6 +6,16 @@ public class Cars {
     private int price;
     private String fuelType;
 
+    @Override
+    public String toString() {
+        return "Cars{" +
+                "carname='" + carname + '\'' +
+                ", seats=" + seats +
+                ", price=" + price +
+                ", fuelType='" + fuelType + '\'' +
+                '}';
+    }
+
     public String getCarname() {
         return carname;
     }

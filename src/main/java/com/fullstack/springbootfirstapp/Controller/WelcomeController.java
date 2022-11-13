@@ -58,14 +58,22 @@ public class WelcomeController {
         return "booking";
     }
     @RequestMapping(value = "/booking",method = RequestMethod.POST)
-    public String bookingConform(ModelMap mp,@RequestParam String uname,@RequestParam String veh,@RequestParam String stn,@RequestParam String rtn ){
+    public String bookingConform(ModelMap mp,@RequestParam String uname,@RequestParam String veh,@RequestParam String stn,@RequestParam String rtn){
         String num= String.valueOf(Math.abs(LocalDateTime.now().hashCode()));
-        String registerId = "FLY202" + num;
+        String registerId = "FLY" + num;
         mp.addAttribute("bookId",registerId);
         LocalDate start=LocalDate.parse(stn);// start date parsing
         LocalDate end=LocalDate.parse(rtn);//Return date parsing
         bookingsService.saveData(registerId,uname,veh,start,end);
-        Bookings bks=bookingsService.getByNum(registerId,veh);
+        carService.updateCar(veh,start,end);
         return "final";
+    }
+    @RequestMapping(value = "/details",method = RequestMethod.POST)
+    public ModelAndView bookingDetails(@RequestParam String personId){
+        ModelAndView move = new ModelAndView();
+        Bookings bks=bookingsService.getByNum(personId);
+        move.addObject("owner",bks);
+        move.setViewName("details");
+        return move;
     }
 }

@@ -7,5 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface CarDao {
-    List<Cars> getCars(LocalDate start, LocalDate end, String model);
+    List<Cars> getCars(LocalDate start, LocalDate end);
+
+    void updateCar(String veh, LocalDate start, LocalDate end);
 }

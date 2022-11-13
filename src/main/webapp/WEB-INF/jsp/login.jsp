@@ -22,7 +22,7 @@
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="text" name="username" class="form-control" />
+                                            <input type="text" name="username" class="form-control" required/>
                                             <label class="form-label" for="username">Your Name</label>
                                         </div>
                                     </div>
@@ -30,7 +30,7 @@
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="email" name="user_mail" class="form-control" />
+                                            <input type="email" name="user_mail" class="form-control" required/>
                                             <label class="form-label" for="user_mail">Your Email</label>
                                         </div>
                                     </div>
@@ -38,7 +38,7 @@
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="password" name="pwd" class="form-control" />
+                                            <input type="password" name="pwd" class="form-control" required/>
                                             <label class="form-label" for="pwd">Password</label>
                                         </div>
                                     </div>
@@ -64,7 +64,5 @@
         </div>
     </div>
 </section>
-
-
 </body>
 </html>

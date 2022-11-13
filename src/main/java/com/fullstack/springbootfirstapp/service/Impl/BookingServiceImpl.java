@@ -19,8 +19,8 @@ public class BookingServiceImpl implements BookingsService {
     }
 
     @Override
-    public Bookings getByNum(String registerId, String veh) {
-        Bookings bookings=bookingsDao.getByNum(registerId,veh);
+    public Bookings getByNum(String registerId) {
+        Bookings bookings=bookingsDao.getByNum(registerId);
         return bookings;
     }
 }

@@ -6,5 +6,5 @@ import java.time.LocalDate;
 
 public interface BookingsDao {
     void saveData(String registerId, String uname, String veh, LocalDate start, LocalDate end);
-    Bookings getByNum(String registerId,String veh);
+    Bookings getByNum(String registerId);
 }

@@ -11,6 +11,19 @@ public class Bookings {
     private String price;
     private int seating;
 
+    @Override
+    public String toString() {
+        return "Bookings{" +
+                "person='" + person + '\'' +
+                ", vehicletitle='" + vehicletitle + '\'' +
+                ", pick=" + pick +
+                ", register='" + register + '\'' +
+                ", retcar=" + retcar +
+                ", price='" + price + '\'' +
+                ", seating=" + seating +
+                '}';
+    }
+
     public String getPerson() {
         return person;
     }
