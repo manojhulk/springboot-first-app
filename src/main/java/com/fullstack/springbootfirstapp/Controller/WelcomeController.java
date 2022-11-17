@@ -44,13 +44,17 @@ public class WelcomeController {
         return "welcome";
     }
     @RequestMapping(value = "/welcome",method = RequestMethod.POST)
-    public ModelAndView carsAvailable(@RequestParam String start,@RequestParam String end){
+    public ModelAndView carsAvailable(@RequestParam String start,@RequestParam String end,@RequestParam String model){
         ModelAndView md = new ModelAndView();
         LocalDate st_time=LocalDate.parse(start);
         LocalDate end_time=LocalDate.parse(end);
-        List<Cars> cars=carService.getCars(st_time,end_time);
-        md.addObject("users",cars);
-        md.setViewName("CarDetails");
+        List<Cars> cars=carService.getCars(st_time,end_time,model);
+        if(!cars.isEmpty()){
+            md.addObject("users",cars);
+            md.setViewName("CarDetails");
+            return md;
+        }
+        md.addObject("errorMsg","No Cars Available");
         return md;
     }
     @RequestMapping(value = "/booking",method = RequestMethod.GET)

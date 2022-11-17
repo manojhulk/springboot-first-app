@@ -33,7 +33,7 @@ public class BookingsDaoImpl extends JdbcDaoSupport implements BookingsDao {
 
     @Override
     public Bookings getByNum(String registerId) {
-        String sql_select="select b.regisid,b.person,b.vehicletitle,p.PricePerDay,p.Seating,b.pick,b.returns from prime p, booking b where b.regisid=? and p.vehicletitle=?";
+        String sql_select="select b.regisid,b.person,b.vehicletitle,p.PricePerDay,p.Seating,b.pick,b.returns from prime p, booking b where b.regisid=? and p.vehicletitle=b.vehicletitle";
         return getJdbcTemplate().queryForObject(sql_select, new Object[]{registerId}, new RowMapper<Bookings>() {
             @Override
             public Bookings mapRow(ResultSet rs, int rowNum) throws SQLException {

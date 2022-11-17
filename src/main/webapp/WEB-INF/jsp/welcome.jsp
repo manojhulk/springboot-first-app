@@ -17,7 +17,7 @@
    <form method="post" style="width:50%; margin-left:25%;">
          <input type="text" class="form-control mt-3" name="start" placeholder="Journey start" required/>
          <input type="text" class="form-control mt-3" name="end" placeholder="Journey end" required/>
-         <input type="text" class="form-control mt-3" name="model" placeholder="vehicle name"/><br>
+         <input type="text" class="form-control mt-3" name="model" placeholder="vehicle Brand"/><br>
          <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
              <button class="btn btn-primary btn-lg">FIND</button>
          </div>

@@ -38,7 +38,7 @@
             </c:forEach>
           </tbody>
         </table><br><br>
-        <form action="/">
+        <form action="/" method="post">
           <h3>Price Filter</h3>
           <label for="quantity">(price between 500 and 5000):</label>
           <input type="number" id="quantity" name="amount" min="500" max="5000" required>

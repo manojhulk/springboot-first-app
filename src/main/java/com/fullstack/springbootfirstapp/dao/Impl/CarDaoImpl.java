@@ -29,18 +29,35 @@ public class CarDaoImpl extends JdbcDaoSupport implements CarDao {
         setDataSource(dataSource);
     }
     @Override
-    public List<Cars> getCars(LocalDate start, LocalDate end) {
+    public List<Cars> getCars(LocalDate start, LocalDate end,String model) {
+            String mode=model.toLowerCase();
+            String sql = "select * from prime where VehicleBrand=? and status=1 order by PricePerDay";
+            List<Cars> customers = new ArrayList<>();
+            List<Map<String, Object>> list = getJdbcTemplate().queryForList(sql,mode);
+            for (Map<String, Object> map : list) {
+                Cars car = new Cars();
+                car.setCarname((String)map.get("vehicletitle"));
+                car.setSeats((Integer)map.get("Seating"));
+                car.setPrice((Integer)map.get("PricePerDay"));
+                car.setFuelType((String) map.get("FuelType"));
 
-        String sql = "select * from prime ";
+                customers.add(car);
+            }
+
+
+        return customers;
+    }
+
+    public List<Cars> getCarsByOrder(int num){
+        String sql="select * from prime where status=1 and PricePerDay<=? order by PricePerDay DESC";
         List<Cars> customers = new ArrayList<>();
-        List<Map<String, Object>> list = getJdbcTemplate().queryForList(sql);
+        List<Map<String, Object>> list = getJdbcTemplate().queryForList(sql,num);
         for (Map<String, Object> map : list) {
             Cars car = new Cars();
             car.setCarname((String)map.get("vehicletitle"));
             car.setSeats((Integer)map.get("Seating"));
             car.setPrice((Integer)map.get("PricePerDay"));
             car.setFuelType((String) map.get("FuelType"));
-
             customers.add(car);
         }
         return customers;
