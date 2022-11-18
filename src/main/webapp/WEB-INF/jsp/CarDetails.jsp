@@ -16,6 +16,7 @@
     </head>
     <body>
         <h2 align="center">Car Details:</h2>
+        //<h3 align="center">${errorMsg}</h3>
         <table align="center" class="table table-striped table-hover" style="width:80%">
           <thead>
             <tr>
@@ -38,12 +39,13 @@
             </c:forEach>
           </tbody>
         </table><br><br>
-        <form action="/" method="post">
+        <form action="/filter" method="post">
           <h3>Price Filter</h3>
+          <input type="hidden" id="custId" name="model" value="${model}">
           <label for="quantity">(price between 500 and 5000):</label>
           <input type="number" id="quantity" name="amount" min="500" max="5000" required>
           <label for="order">Choose order</label>
-          <select name="order">
+          <select name="type">
              <option value="2" disabled>Choose option</option>
              <option value="0">Low-High</option>
              <option value="1">High-Low</option>

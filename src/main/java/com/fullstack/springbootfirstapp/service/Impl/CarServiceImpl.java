@@ -26,8 +26,8 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Cars> getCarsByOrder(int num) {
-        List<Cars> c2 = carDao.getCarsByOrder(num);
+    public List<Cars> getCarsByOrder(int num,String order,String model) {
+        List<Cars> c2 = carDao.getCarsByOrder(num,order,model);
         return c2;
     }
 

@@ -49,12 +49,21 @@ public class WelcomeController {
         LocalDate st_time=LocalDate.parse(start);
         LocalDate end_time=LocalDate.parse(end);
         List<Cars> cars=carService.getCars(st_time,end_time,model);
+        md.addObject("model",model);
         if(!cars.isEmpty()){
             md.addObject("users",cars);
             md.setViewName("CarDetails");
             return md;
         }
         md.addObject("errorMsg","No Cars Available");
+        return md;
+    }
+    @RequestMapping(value = "/filter",method = RequestMethod.POST)
+    public ModelAndView carsAvailableFilter(@RequestParam int amount,@RequestParam String type,@RequestParam String model){
+        ModelAndView md = new ModelAndView();
+        List<Cars> cars=carService.getCarsByOrder(amount, type,model);
+        md.addObject("users",cars);
+        md.setViewName("CarDetails");
         return md;
     }
     @RequestMapping(value = "/booking",method = RequestMethod.GET)

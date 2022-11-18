@@ -48,10 +48,15 @@ public class CarDaoImpl extends JdbcDaoSupport implements CarDao {
         return customers;
     }
 
-    public List<Cars> getCarsByOrder(int num){
-        String sql="select * from prime where status=1 and PricePerDay<=? order by PricePerDay DESC";
+    public List<Cars> getCarsByOrder(int num,String order,String model){
+        String sql;
+        if(order.equals("0")){
+            sql="select * from prime where status=1 and PricePerDay<=? and VehicleBrand=? order by PricePerDay";
+        }else{
+            sql="select * from prime where status=1 and PricePerDay<=? and VehicleBrand=? order by PricePerDay DESC";
+        }
         List<Cars> customers = new ArrayList<>();
-        List<Map<String, Object>> list = getJdbcTemplate().queryForList(sql,num);
+        List<Map<String, Object>> list = getJdbcTemplate().queryForList(sql,num,model);
         for (Map<String, Object> map : list) {
             Cars car = new Cars();
             car.setCarname((String)map.get("vehicletitle"));
